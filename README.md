@@ -1,7 +1,7 @@
-# Weather Forecast App
+# Rails Weather Forecast System
 
 ## Overview
-The Weather Forecast App is a Ruby on Rails application that retrieves weather data for a given address. It integrates with an external weather API and caches responses to improve performance. The application follows best practices by using design patterns such as **Decorator, Service Object, and Factory**, and implements background jobs for efficiency.
+The Rails Weather Forecast System is a Ruby on Rails application that retrieves weather data for a given address. It integrates with an external weather API and caches responses to improve performance. The application follows best practices by using design patterns such as **Decorator, Service Object, and Factory**, and implements background jobs for efficiency.
 
 ## Features
 - Fetches weather data based on a given address.
@@ -13,7 +13,7 @@ The Weather Forecast App is a Ruby on Rails application that retrieves weather d
 
 ## Tech Stack
 - **Ruby on Rails 5.2.8**
-- **Ruby 2.6.1**
+- **Ruby 2.7.6**
 - **Redis** (for caching)
 - **Sidekiq** (for background jobs)
 - **RSpec** (for testing)
@@ -172,4 +172,3 @@ cached_data = Rails.cache.read(zip_code)
 ## Conclusion
 This application follows best practices by incorporating **design patterns, background jobs, caching, and secure API management**. The **Decorator, Service Object, and Factory** patterns improve maintainability and readability. Background jobs ensure that API calls do not block user interactions, and Redis caching optimizes performance. The app is well-tested using **RSpec** to ensure reliability.
 
-# rails_weather_forecast_system
