@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Weather Forecast System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 min-h-screen flex flex-col items-center justify-center">
+
+  <!-- 🌤️ Weather App Wrapper -->
+  <div class="w-full max-w-2xl bg-white/90 backdrop-blur-lg border border-blue-100 shadow-2xl rounded-2xl p-8">
+    
+    <!-- 🌍 Header Section -->
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-bold text-blue-700 drop-shadow-sm">🌦️ Smart Weather Dashboard</h1>
+      <p class="text-gray-600 mt-2 text-sm">Check real-time weather & 5-day forecast instantly</p>
+    </div>
+
+    <!-- 🔹 Your Original Code (Unmodified) -->
+    <div class="bg-white shadow-md rounded-lg p-6 w-full">
+      <h1 class="text-2xl font-bold text-center mb-4">Weather Forecast</h1>
+      
+      <%= form_with url: fetch_weather_path, remote: true, method: :post, class: "space-y-4" do %>
+        <div>
+          <%= label_tag :address, "Enter Address:", class: "block text-sm font-medium text-gray-700" %>
+          <%= text_field_tag :address, nil, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" %>
+        </div>
+        <%= submit_tag "Get Weather", class: "w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-all duration-200" %>
+      <% end %>
+      
+      <div id="weather-container">
+        <% if @weather.is_a?(WeatherDecorator) %>
+          <div class="mt-6 p-4 bg-blue-50 rounded-lg shadow-md">
+            <h2 class="text-lg font-semibold text-gray-800">Weather for <%= @weather.name %></h2>
+            <p class="text-gray-600"><%= @weather.formatted_weather %></p>
+            <p class="text-sm text-gray-500 mt-2">Data Source: <%= @cached ? "Cache" : "Live API" %></p>
+          </div>
+          <% if @weather.forecast.present? %>
+            <div class="mt-6">
+              <h3 class="text-md font-semibold text-gray-800 mb-3 border-b pb-1">5-Day Forecast:</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                <% @weather.forecast.each do |day| %>
+                  <div class="p-3 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+                    <p class="font-medium text-blue-800"><%= day[:date] %></p>
+                    <p class="text-gray-700">🌡️ Temp: <%= day[:temp] %>°C</p>
+                    <p class="text-gray-700">🌤️ <%= day[:condition].capitalize %></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>        
+        <% elsif @weather && @weather[:error] %>
+          <p class="text-red-600 mt-4 text-center font-semibold">⚠️ Error: <%= @weather[:error] %></p>
+        <% end %>
+      </div>
+    </div>
+    <!-- 🔹 End of Your Original Code -->
+
+    <!-- 💡 Footer -->
+    # <footer class="text-center text-xs text-gray-500 mt-6">
+    #   Built with ❤️ using Ruby on Rails & OpenWeather API
+    # </footer>
+
+  </div>
+</body>
+</html>
