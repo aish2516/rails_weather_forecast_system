@@ -19,6 +19,29 @@ The Rails Weather Forecast System is a Ruby on Rails application that retrieves 
 - **RSpec** (for testing)
 - **Hotwire** (for real-time updates)
 
+### 🧾 Example Output  
+
+**Current Weather for Cupertino, CA**  
+**Temperature:** 23°C  
+**Feels Like:** 22°C  
+**Humidity:** 40%  
+**High:** 25°C  
+**Low:** 17°C  
+🌐 *Data retrieved live from OpenWeather API*  
+
+---
+
+### 📅 5-Day Forecast  
+
+| Date | Temp | High | Low | Condition |
+|------|------|------|------|-----------|
+| **Nov 12** | 23°C | 25°C | 17°C | Clear sky |
+| **Nov 13** | 24°C | 27°C | 16°C | Few clouds |
+| **Nov 14** | 21°C | 24°C | 15°C | Scattered clouds |
+| **Nov 15** | 22°C | 25°C | 14°C | Clear sky |
+| **Nov 16** | 23°C | 26°C | 15°C | Clear sky |
+
+
 ## Design Patterns Used
 ### 1. Decorator Pattern
 The **Decorator Pattern** is used to encapsulate and extend the functionality of weather data responses.
